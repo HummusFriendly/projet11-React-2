@@ -1,0 +1,41 @@
+{
+  "name": "profil-page",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Frontend et Backend pour la page de profil",
+  "type": "commonjs",
+  "repository": "https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git",
+  "author": "tdimnet <thomas.dimnet@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "backend:dev": "nodemon app/index.js",
+    "backend:start": "node app/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "idx": "^2.5.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.14.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "nodemon": "^2.0.4",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.15.0",
+    "vite": "^6.0.1"
+  }
+}

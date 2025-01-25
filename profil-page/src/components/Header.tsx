@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css';
 import logo from '../assets/logo.png';
-import copy from '../assets/Copy.png';
 import nav from '../assets/nav.png';
 
 const Header: React.FC = () => {
@@ -19,7 +18,8 @@ const Header: React.FC = () => {
 
             <div className="sidebar">
                 <img src={nav} alt="Navigation" className="nav-image" />
-                <img src={copy} alt="Copy" className="copy-image" />
+                <p className='text'>Copiryght, SportSee 2020</p>
+                
             </div>
         </>
     );

@@ -4,7 +4,7 @@ interface UserInfo {
     age: number;
 }
 
-interface KeyData {
+export interface KeyData {
     calorieCount: number;
     proteinCount: number;
     carbohydrateCount: number;
@@ -14,17 +14,20 @@ interface KeyData {
 export interface UserData {
     id: number;
     userInfos: UserInfo;
-    todayScore: number;
+    todayScore?: number;
+    score?: number;
     keyData: KeyData;
+    firstName: string;
+    lastName: string;
 }
 
-interface ActivitySession {
+export interface ActivitySession {
     day: string;
     kilogram: number;
     calories: number;
 }
 
-interface UserActivity {
+export interface UserActivity {
     userId: number;
     sessions: ActivitySession[];
 }
@@ -34,7 +37,7 @@ interface AverageSession {
     sessionLength: number;
 }
 
-interface UserAverageSessions {
+export interface UserAverageSessions {
     userId: number;
     sessions: AverageSession[];
 }
@@ -44,7 +47,7 @@ interface PerformanceData {
     kind: number;
 }
 
-interface UserPerformance {
+export interface UserPerformance {
     userId: number;
     kind: { [key: number]: string };
     data: PerformanceData[];

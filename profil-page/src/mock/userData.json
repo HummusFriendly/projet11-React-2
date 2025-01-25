@@ -1,9 +1,0 @@
-{
-  "user": {
-    "id": 12,
-    "name": "Anthony",
-    "activity": [
-      { "date": "09/12/2024", "kebab": 1, "caca": 1 }
-    ]
-  }
-}

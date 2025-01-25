@@ -14,6 +14,9 @@ const {
     handleNoUserData
 } = require('./middleware')
 
+router.get('/favicon.ico', (req, res) => {
+    res.status(204).end(); // Répond avec un statut HTTP 204 (pas de contenu)
+});
 
 router.get('/user/:id', (req, res) => {
     const userId = idx(req, _ => _.params.id)
@@ -50,6 +53,13 @@ router.get('/user/:id/average-sessions', (req, res) => {
 router.get('/user/:id/performance', (req, res) => {
     const userId = idx(req, _ => _.params.id)
     const userData = getUserPerformance(Number(userId))
+
+    return handleNoUserData(res, userData)
+})
+
+router.get('/user/:id/score', (req, res) => {
+    const userId = idx(req, _ => _.params.id)
+    const userData = getUserScore(parseInt(userId))
 
     return handleNoUserData(res, userData)
 })

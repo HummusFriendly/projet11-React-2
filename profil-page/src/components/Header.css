@@ -15,11 +15,12 @@
 .logo {
     height: 68px;
     margin-right: 20px;
+    margin-left: -110px;
 }
 
 .nav-links {
     display: flex;
-    gap: 25%;
+    gap: 15%;
     align-items: center;
 }
 
@@ -28,6 +29,7 @@
     text-decoration: none;
     font-family: "Roboto", sans-serif;
     font-size: 24px;
+    padding: 8px;
 }
 
 .sidebar {
@@ -42,14 +44,12 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    padding: 20px 0;
-    overflow-y: auto;
 }
 
 .nav-image {
     width: 64px;
     height: 316px;
-    margin-top: auto;
+    margin-top: 250px;
 }
 
 .copy-image {
@@ -59,7 +59,7 @@
 }
 
 .sidebar img {
-    margin: auto;
+    margin-bottom: 30px;
 }
 
 
@@ -70,5 +70,13 @@ body {
     overflow-y: auto;
 }
 
+.text {
+    color: white;
+    transform: rotate(-90deg);
+    width: 200px;
+    height: 24px;
+    margin-bottom: 120px;
+    font-size: 12px;
+}
 
 

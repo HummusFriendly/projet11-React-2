@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getActivityByUserId, getAverageSessionByUserId, getUserByUserId, getPerfSessionByUserId, getUserScore } from './services/api';
+import { getActivityByUserId, getAverageSessionByUserId, getUserByUserId, getPerfSessionByUserId } from './services/api';
 import { UserActivity, UserData, UserAverageSessions, UserPerformance } from './types/apiTypes';
 import ActivityChart, { ActivityChartType } from './components/ActivityChart';
 import AverageChart, { AverageChartType } from './components/AverageChart';
@@ -55,7 +55,6 @@ const App = () => {
     const fetchData = async () => {
       try {
 
-
         const [activity, user, averageSession,perfSession,scoreSession] = await Promise.all([getActivityByUserId(18),getUserByUserId(18),getAverageSessionByUserId(18),getPerfSessionByUserId(18),getUserByUserId(18)]); // On centralise ici l'appel API
         const activityData=mapActivityChartData(activity.data);
         const averageData=mapAverageChartData(averageSession.data);
@@ -87,12 +86,12 @@ const App = () => {
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
           </div>
           {dataActivity && <ActivityChart data={dataActivity}/>}
+          <div className='container-display'>
           {dataAverage && <AverageChart data={dataAverage}/>}
           {perfAverage && <PerfChart data={perfAverage}/>}
           {scoreAverage && <ScoreChart data={scoreAverage}/>}
-          <div className="container-display">
           </div>
-        </div>
+          </div>
               <ColumnImg /></>
       ) : (
         <p>Chargement...</p>

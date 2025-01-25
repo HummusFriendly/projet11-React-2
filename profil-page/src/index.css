@@ -60,7 +60,7 @@ html, body, #root {
   color: white;
   position: fixed;
   top: 0;
-  left: 117px;
+  left: 90px;
   height: 91px;
   width: calc(100% - 117px);
   display: flex;

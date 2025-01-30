@@ -3,7 +3,6 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
   ResponsiveContainer,
 } from 'recharts';
@@ -15,20 +14,23 @@ interface PerfChartProps {
 }
 
 const PerfChart = ({ data }: PerfChartProps) => {
-  console.log(data)
+  console.log(data);
+  
+  // Décaler les valeurs de 3 positions
+  const rotatedData = [...data.slice(3), ...data.slice(0, 3)];
+
   return (
-    <div className='container-perf'>
+    <div className='container-perf' style={{ backgroundColor: '#282D30', padding: '10px' }}>
       <ResponsiveContainer>
-        <RadarChart outerRadius="70%" data={data} startAngle={30} endAngle={390}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="kind" />
-          <PolarRadiusAxis tick={false} />
+        <RadarChart outerRadius="65%" data={rotatedData} startAngle={30} endAngle={390}>
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis dataKey="kind" tick={{ fontSize: 12, dy: 5 }} />
           <Radar
             name="Performance"
             dataKey="value"
-            stroke="#FF0101"
-            fill="#FF0101"
-            fillOpacity={0.6}
+            stroke="#FF0101B2"
+            fill="#FF0101B2"
+            fillOpacity={0.7}
           />
         </RadarChart>
       </ResponsiveContainer>

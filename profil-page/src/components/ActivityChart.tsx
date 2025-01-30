@@ -6,20 +6,32 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts';
 
 export type ActivityChartType =
-  {kilogram:number,calories:number,day:number}[];
+  { kilogram: number, calories: number, day: number }[];
 
 interface ActivityChartProps {
-  data:ActivityChartType;
+  data: ActivityChartType;
 }
 
-const ActivityChart = ({data}:ActivityChartProps) => {
+const ActivityChart = ({ data }: ActivityChartProps) => {
   return (
-    <div className="container-activity">
+    <div className="container-activity" style={{ backgroundColor: '#FBFBFB', padding: '20px' }}>
+      <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', fontWeight: 'bold' }}>
+        <span>Activité quotidienne</span>
+        <div className="legend" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ width: '10px', height: '10px', backgroundColor: 'black', borderRadius: '50%', display: 'inline-block', marginRight: '5px' }}></span>
+            Poids (kg)
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center',}}>
+            <span style={{ width: '10px', height: '10px', backgroundColor: 'red', borderRadius: '50%', display: 'inline-block', marginRight: '5px' }}></span>
+            Calories brûlées (kCal)
+          </div>
+        </div>
+      </div>
       <ResponsiveContainer>
         <BarChart
           data={data}
@@ -33,31 +45,26 @@ const ActivityChart = ({data}:ActivityChartProps) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="day"
-            label={{ value: 'Jour', position: 'insideBottom', offset: -5 }}
+            tickFormatter={(tick) => `${tick}`}
           />
-          <YAxis
-            yAxisId="kilogram"
-            orientation="left"
-            label={{ value: 'Poids (kg)', angle: -90, position: 'insideLeft' }}
-          />
-          <YAxis
-            yAxisId="calories"
-            orientation="right"
-            label={{ value: 'Calories', angle: -90, position: 'insideRight' }}
-          />
+          <YAxis yAxisId="kilogram" orientation="left" tick={false} />
+          <YAxis yAxisId="calories" orientation="right" tick={false} />
           <Tooltip />
-          <Legend />
           <Bar
             yAxisId="kilogram"
             dataKey="kilogram"
-            fill="#8884d8"
+            fill="black"
             name="Poids (kg)"
+            radius={[4, 4, 0, 0]}
+            barSize={7}
           />
           <Bar
             yAxisId="calories"
             dataKey="calories"
-            fill="#82ca9d"
-            name="Calories"
+            fill="red"
+            name="Calories brûlées (kCal)"
+            radius={[4, 4, 0, 0]}
+            barSize={7}
           />
         </BarChart>
       </ResponsiveContainer>

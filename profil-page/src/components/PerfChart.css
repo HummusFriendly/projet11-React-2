@@ -1,4 +1,6 @@
 .container-perf {
     width: 200px;
     height: 200px;
+    background: #fBfBfB;
+    border-radius: 5px;
 }

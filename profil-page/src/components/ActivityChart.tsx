@@ -17,16 +17,21 @@ interface ActivityChartProps {
 }
 
 const ActivityChart = ({ data }: ActivityChartProps) => {
+  const dataWithSequentialDays = data.map((item, index) => ({
+    ...item,
+    day: index + 1,
+  }));
+
   return (
     <div className="container-activity" style={{ backgroundColor: '#FBFBFB', padding: '20px' }}>
-      <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', fontWeight: 'bold' }}>
+      <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px' }}>
         <span>Activité quotidienne</span>
         <div className="legend" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ width: '10px', height: '10px', backgroundColor: 'black', borderRadius: '50%', display: 'inline-block', marginRight: '5px' }}></span>
             Poids (kg)
           </div>
-          <div style={{ display: 'flex', alignItems: 'center',}}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ width: '10px', height: '10px', backgroundColor: 'red', borderRadius: '50%', display: 'inline-block', marginRight: '5px' }}></span>
             Calories brûlées (kCal)
           </div>
@@ -34,7 +39,7 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
       </div>
       <ResponsiveContainer>
         <BarChart
-          data={data}
+          data={dataWithSequentialDays}
           margin={{
             top: 20,
             right: 30,
@@ -44,7 +49,7 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
-            dataKey="day"
+            dataKey="day"  
             tickFormatter={(tick) => `${tick}`}
           />
           <YAxis yAxisId="kilogram" orientation="left" tick={false} />

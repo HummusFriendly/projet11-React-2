@@ -38,6 +38,7 @@ const AverageChart = ({data}:AverageChartProps) => {
             dataKey="sessionLength"
             stroke="#FFFFFF"
             strokeWidth={2}
+            strokeLinejoin="round"
             dot={false}
             isAnimationActive={true}
           />

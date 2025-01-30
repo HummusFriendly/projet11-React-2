@@ -7,7 +7,7 @@ body {
 
 .container-display {
   display: flex;
-  width: 700px;
+  width: 640px;
   height: 200px;
   margin-left: 150px;
   gap: 30px;

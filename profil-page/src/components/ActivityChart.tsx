@@ -7,6 +7,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  ReferenceLine,
+  Label,
 } from 'recharts';
 
 export type ActivityChartType =
@@ -22,9 +24,14 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
     day: index + 1,
   }));
 
+  const kilograms = data.map((item) => item.kilogram);
+  const minWeight = Math.min(...kilograms);
+  const maxWeight = Math.max(...kilograms);
+  const aboveMaxWeight = maxWeight + 1;
+
   return (
-    <div className="container-activity" style={{ backgroundColor: '#FBFBFB', padding: '20px' }}>
-      <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px' }}>
+    <div className="container-activity" style={{ backgroundColor: '#FBFBFB'}}>
+      <div className="chart-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '15px', padding: '10px' }}>
         <span>Activité quotidienne</span>
         <div className="legend" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -42,19 +49,18 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
           data={dataWithSequentialDays}
           margin={{
             top: 20,
-            right: 30,
-            left: 20,
+            right: 0,  // Alignement avec la parenthèse ")"
+            left: 0,   // Alignement avec la lettre "A"
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            dataKey="day"  
-            tickFormatter={(tick) => `${tick}`}
-          />
-          <YAxis yAxisId="kilogram" orientation="left" tick={false} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="day" tickFormatter={(tick) => `${tick}`} />
+          <YAxis yAxisId="kilogram" orientation="left" tick={false} domain={[minWeight, aboveMaxWeight]} />
           <YAxis yAxisId="calories" orientation="right" tick={false} />
+
           <Tooltip />
+
           <Bar
             yAxisId="kilogram"
             dataKey="kilogram"
@@ -71,6 +77,16 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
             radius={[4, 4, 0, 0]}
             barSize={7}
           />
+
+          <ReferenceLine y={minWeight} yAxisId="kilogram" strokeDasharray="3 3" stroke="#8884d8">
+            <Label value={minWeight} position="right" offset={20} />
+          </ReferenceLine>
+          <ReferenceLine y={maxWeight} yAxisId="kilogram" strokeDasharray="3 3" stroke="#8884d8">
+            <Label value={maxWeight} position="right" offset={20} />
+          </ReferenceLine>
+          <ReferenceLine y={aboveMaxWeight} yAxisId="kilogram" strokeDasharray="3 3" stroke="#8884d8">
+            <Label value={aboveMaxWeight} position="right" offset={20} />
+          </ReferenceLine>
         </BarChart>
       </ResponsiveContainer>
     </div>

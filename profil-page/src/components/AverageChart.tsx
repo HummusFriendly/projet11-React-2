@@ -7,30 +7,51 @@ import {
   Tooltip,
   ResponsiveContainer,
   ReferenceDot,
+  ReferenceArea,
 } from 'recharts';
 
-export type AverageChartType =
-  {day:number,sessionLength:number}[];
+export type AverageChartType = { day: number; sessionLength: number }[];
 
 interface AverageChartProps {
-  data:AverageChartType;
+  data: AverageChartType;
 }
 
-const AverageChart = ({data}:AverageChartProps) => {
+const dayLabels = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+
+const AverageChart = ({ data }: AverageChartProps) => {
+  const extendedData = [
+    { day: 0, sessionLength: data[0].sessionLength },
+    ...data,
+    { day: 8, sessionLength: data[data.length - 1].sessionLength },
+  ];
 
   return (
     <div className='container-average'>
       <ResponsiveContainer>
         <LineChart
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 10,
-          }}
+          data={extendedData}
+          margin={{ top: 20, right: 0, left: 0, bottom: 10 }}
         >
-          <XAxis dataKey="day" axisLine={false} tickLine={false} />
+          <defs>
+            <linearGradient id="backgroundGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="75%" stopColor="red" />
+              <stop offset="75%" stopColor="darkred" />
+              <stop offset="100%" stopColor="darkred" />
+            </linearGradient>
+          </defs>
+
+          <ReferenceArea x1={0} x2={8} y1={0} y2={100} fill="url(#backgroundGradient)" />
+
+          <XAxis
+            dataKey="day"
+            type="number"
+            domain={[0, 8]}
+            axisLine={false}
+            tickLine={false}
+            tickFormatter={(day) => (day >= 1 && day <= 7 ? dayLabels[day - 1] : '')}
+            ticks={[1, 2, 3, 4, 5, 6, 7]}
+            interval={0}
+          />
           <YAxis hide />
           <Tooltip />
           <Line
@@ -42,10 +63,9 @@ const AverageChart = ({data}:AverageChartProps) => {
             dot={false}
             isAnimationActive={true}
           />
-          {/* Cercle après vendredi */}
           <ReferenceDot
-            x="S"
-            y={data.find((d) => d.day == 6)?.sessionLength}
+            x={6}
+            y={data.find((d) => d.day === 6)?.sessionLength}
             r={5}
             fill="#FFFFFF"
             stroke="#FFFFFF"

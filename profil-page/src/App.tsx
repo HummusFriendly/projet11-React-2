@@ -5,7 +5,7 @@ import ActivityChart, { ActivityChartType } from './components/ActivityChart';
 import AverageChart, { AverageChartType } from './components/AverageChart';
 import PerfChart, { PerfChartType } from './components/PerfChart';
 import ScoreChart, { ScoreChartType } from './components/ScoreChart';
-import ColumnImg from './components/ColumnImg';
+import KeyData from './components/KeyData';
 import './App.css';
 
 function 
@@ -55,11 +55,11 @@ const App = () => {
     const fetchData = async () => {
       try {
 
-        const [activity, user, averageSession,perfSession,scoreSession] = await Promise.all([getActivityByUserId(18),getUserByUserId(18),getAverageSessionByUserId(18),getPerfSessionByUserId(18),getUserByUserId(18)]); // On centralise ici l'appel API
+        const [activity, user, averageSession,perfSession] = await Promise.all([getActivityByUserId(18),getUserByUserId(18),getAverageSessionByUserId(18),getPerfSessionByUserId(18)]); // On centralise ici l'appel API
         const activityData=mapActivityChartData(activity.data);
         const averageData=mapAverageChartData(averageSession.data);
         const perfData=mapPerfChartData(perfSession.data);
-        const scoreData=mapScoreChartData(scoreSession.data);
+        const scoreData=mapScoreChartData(user.data);
         console.log(perfData)
         setDataActivity(activityData);
         setDataAverage(averageData);
@@ -92,7 +92,8 @@ const App = () => {
           {scoreAverage && <ScoreChart data={scoreAverage}/>}
           </div>
           </div>
-              <ColumnImg /></>
+          { dataUser && <KeyData data={dataUser.keyData}/>}
+          </>
       ) : (
         <p>Chargement...</p>
       )}

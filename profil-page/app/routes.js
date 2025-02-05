@@ -57,11 +57,4 @@ router.get('/user/:id/performance', (req, res) => {
     return handleNoUserData(res, userData)
 })
 
-router.get('/user/:id/score', (req, res) => {
-    const userId = idx(req, _ => _.params.id)
-    const userData = getUserScore(parseInt(userId))
-
-    return handleNoUserData(res, userData)
-})
-
 module.exports = router

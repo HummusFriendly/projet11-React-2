@@ -1,29 +1,6 @@
 .container-average {
-    width: 200px;
-    height: 200px;
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(180deg, #FF0000 40.32%, #8B0000 100%);
-    border-radius: 5px;
-  }
-  
-  /* AverageChart.css */
-.container-average {
-    position: relative; /* Needed for absolute positioning of title */
-  }
-  
-  .chart-title {
-    position: absolute;
-    top: 10px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif; /* Use Roboto font */
-  }
-  
-  .recharts-wrapper {
-    width: 100% !important; /* Make chart container full width */
-  }
-  
-  .recharts-line-curve {
-    stroke-width: 4px !important; /* Increase line width for better visibility */
-  }
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to right, #FF0000 75%, #8B0000 75%);
+  border-radius: 5px;
+}

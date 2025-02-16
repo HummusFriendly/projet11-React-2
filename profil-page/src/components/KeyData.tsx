@@ -7,13 +7,10 @@ import { KeyData as KeyDataType } from '../types/apiTypes';
 
 
 interface KeyDataProps {
-  data: KeyDataType;
+    data: KeyDataType;
 }
 
 const KeyData = ({ data }: KeyDataProps) => {
-
-
-
     const renderData = (imgSrc: string, value: number, label: string) => (
         <div className="data-item">
             <img src={imgSrc} alt={label} className="data-img" />

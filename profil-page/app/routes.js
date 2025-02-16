@@ -15,7 +15,7 @@ const {
 } = require('./middleware')
 
 router.get('/favicon.ico', (req, res) => {
-    res.status(204).end(); // Répond avec un statut HTTP 204 (pas de contenu)
+    res.status(204).end(); 
 });
 
 router.get('/user/:id', (req, res) => {

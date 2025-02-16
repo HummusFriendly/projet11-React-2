@@ -3,11 +3,21 @@ import { mockUserData } from '../mock/userData.ts';
 // Configuration pour activer/désactiver les données mockées
 const isMocked = false;
 
+const wrapData = (data: any) => {
+  return { data }; // Wrap the data in a `data` key to match API response format
+};
+
 export const getUserByUserId = async (userId: number) => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(mockUserData);
+        const userData = mockUserData.mainData.find((user) => user.id === userId);
+        if (!userData) {
+          console.error(`User with ID ${userId} not found in mock data`);
+          resolve(null);
+        } else {
+          resolve(wrapData(userData));
+        }
       }, 500);
     });
   }
@@ -25,11 +35,16 @@ export const getUserByUserId = async (userId: number) => {
 };
 
 export const getActivityByUserId = async (userId: number) => {
-  //adapt to use mock activity
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(mockUserData);
+        const activityData = mockUserData.activity.find((item) => item.userId === userId);
+        if (!activityData) {
+          console.error(`Activity data not found for user ID ${userId}`);
+          resolve(null);
+        } else {
+          resolve(wrapData(activityData));
+        }
       }, 500);
     });
   }
@@ -47,11 +62,16 @@ export const getActivityByUserId = async (userId: number) => {
 };
 
 export const getAverageSessionByUserId = async (userId: number) => {
-  //adapt to use mock activity
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(mockUserData);
+        const averageSessionData = mockUserData.averageSessions.find((item) => item.userId === userId);
+        if (!averageSessionData) {
+          console.error(`Average session data not found for user ID ${userId}`);
+          resolve(null);
+        } else {
+          resolve(wrapData(averageSessionData));
+        }
       }, 500);
     });
   }
@@ -69,11 +89,16 @@ export const getAverageSessionByUserId = async (userId: number) => {
 };
 
 export const getPerfSessionByUserId = async (userId: number) => {
-  //adapt to use mock activity
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(mockUserData);
+        const performanceData = mockUserData.performance.find((item) => item.userId === userId);
+        if (!performanceData) {
+          console.error(`Performance data not found for user ID ${userId}`);
+          resolve(null);
+        } else {
+          resolve(wrapData(performanceData));
+        }
       }, 500);
     });
   }
@@ -91,11 +116,17 @@ export const getPerfSessionByUserId = async (userId: number) => {
 };
 
 export const getUserScoreByUserId = async (userId: number) => {
-  //adapt to use mock activity
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(mockUserData);
+        const userData = mockUserData.mainData.find((user) => user.id === userId);
+        if (!userData) {
+          console.error(`User score not found for user ID ${userId}`);
+          resolve(null);
+        } else {
+          const score = userData.todayScore ?? userData.score ?? null;
+          resolve(wrapData({ userId, score }));
+        }
       }, 500);
     });
   }

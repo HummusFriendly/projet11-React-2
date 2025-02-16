@@ -10,7 +10,6 @@ interface ScoreChartProps {
 }
 
 const ScoreChart = ({ data }: ScoreChartProps) => {
-  console.log(data, 'data');
   const scorePercentage = data[0]?.value || 0;
   const formattedData = [
     { value: scorePercentage },

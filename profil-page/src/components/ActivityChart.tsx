@@ -49,8 +49,8 @@ const ActivityChart = ({ data }: ActivityChartProps) => {
           data={dataWithSequentialDays}
           margin={{
             top: 20,
-            right: 0,  // Alignement avec la parenthèse ")"
-            left: 0,   // Alignement avec la lettre "A"
+            right: 0,
+            left: 0,
             bottom: 5,
           }}
         >

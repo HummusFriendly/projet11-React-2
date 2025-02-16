@@ -16,7 +16,6 @@ interface PerfChartProps {
 const PerfChart = ({ data }: PerfChartProps) => {
   console.log(data);
   
-  // Décaler les valeurs de 3 positions
   const rotatedData = [...data.slice(3), ...data.slice(0, 3)];
 
   return (

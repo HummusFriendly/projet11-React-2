@@ -1,13 +1,15 @@
 import { mockUserData } from '../mock/userData.ts';
+import { ResponseWrapper, UserActivity, UserAverageSessions, UserData, UserPerformance } from '../types/apiTypes.ts';
 
-// Configuration pour activer/désactiver les données mockées
-const isMocked = false;
+// Set to true or false to use api or mock
+const isMocked = true;
 
 const wrapData = (data: any) => {
-  return { data }; // Wrap the data in a `data` key to match API response format
+  // Wrap the data in a `data` key to match API response format
+  return { data }; 
 };
 
-export const getUserByUserId = async (userId: number) => {
+export const getUserByUserId = async (userId: number): Promise<ResponseWrapper<UserData> | null> => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -34,7 +36,7 @@ export const getUserByUserId = async (userId: number) => {
   }
 };
 
-export const getActivityByUserId = async (userId: number) => {
+export const getActivityByUserId = async (userId: number): Promise<ResponseWrapper<UserActivity> | null> => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -61,7 +63,7 @@ export const getActivityByUserId = async (userId: number) => {
   }
 };
 
-export const getAverageSessionByUserId = async (userId: number) => {
+export const getAverageSessionByUserId = async (userId: number): Promise<ResponseWrapper<UserAverageSessions> | null> => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -88,7 +90,7 @@ export const getAverageSessionByUserId = async (userId: number) => {
   }
 };
 
-export const getPerfSessionByUserId = async (userId: number) => {
+export const getPerfSessionByUserId = async (userId: number): Promise<ResponseWrapper<UserPerformance> | null> => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -115,7 +117,7 @@ export const getPerfSessionByUserId = async (userId: number) => {
   }
 };
 
-export const getUserScoreByUserId = async (userId: number) => {
+export const getUserScoreByUserId = async (userId: number): Promise<ResponseWrapper<number> | null>  => {
   if (isMocked) {
     return new Promise((resolve) => {
       setTimeout(() => {

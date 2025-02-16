@@ -1,3 +1,7 @@
+export interface ResponseWrapper<T> {
+    data: T;
+}
+
 interface UserInfo {
     firstName: string;
     lastName: string;
@@ -59,4 +63,3 @@ export interface Data {
     USER_AVERAGE_SESSIONS: UserAverageSessions[];
     USER_PERFORMANCE: UserPerformance[];
 }
-  

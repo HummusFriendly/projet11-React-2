@@ -51,10 +51,6 @@ html, body, #root {
   grid-column: span 3 / span 3;
 }
 
-.data-item {
-  display: grid;
-}
-
 .header {
   background-color: black;
   color: white;
@@ -68,3 +64,11 @@ html, body, #root {
   z-index: 2;
 }
 
+@media screen and (min-width: 1440px) {
+  .container-display {
+    justify-content: space-around;
+    margin-left: 15%;
+    margin-top: 50px;
+    width: 835px;
+  }
+}

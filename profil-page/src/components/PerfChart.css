@@ -4,3 +4,10 @@
     background: #fBfBfB;
     border-radius: 5px;
 }
+
+@media screen and (min-width: 1440px) {
+    .container-perf {
+      width: 260px;
+      height: 260px;
+    }
+  }

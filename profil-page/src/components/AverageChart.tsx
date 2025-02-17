@@ -51,6 +51,7 @@ const AverageChart = ({ data }: AverageChartProps) => {
             tickFormatter={(day) => (day >= 1 && day <= 7 ? dayLabels[day - 1] : '')}
             ticks={[1, 2, 3, 4, 5, 6, 7]}
             interval={0}
+            tick={{ fill: 'white', fontSize: 14 }}
           />
           <YAxis hide />
           <Tooltip />

@@ -5,7 +5,7 @@ import { ResponseWrapper, UserActivity, UserAverageSessions, UserData, UserPerfo
 const isMocked = true;
 
 const wrapData = (data: any) => {
-  // Wrap the data in a `data` key to match API response format
+
   return { data }; 
 };
 

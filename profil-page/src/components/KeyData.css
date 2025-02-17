@@ -6,8 +6,9 @@
 }
 
 .container-column > div{
-    display: grid;
-    gap: 4.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     margin-top: 20%;
 }
 
@@ -15,16 +16,17 @@
     display: flex;
     justify-content: center;
     background-color: #FBFBFB;
-    width: 170px;
+    width: 200px;
+    height: 86px;
     border-radius: 6px;
     padding: 12px;
     gap: 10px;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .data-img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .data-value {
@@ -37,4 +39,20 @@
     font-size: 14px;
     color: #555;
     margin: 0;
+    margin-top: 3px;
 }
+
+@media screen and (min-width: 1440px) {
+    .data-img {
+        width: 60px;
+        height: 60px;
+    }
+    .container-column > div {
+        gap: 2rem;
+        margin-top: 14%;
+    }
+    .data-item {
+        width: 260px;
+        height: 124px;
+    }
+  }

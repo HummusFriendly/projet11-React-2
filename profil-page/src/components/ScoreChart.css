@@ -36,3 +36,9 @@
     border: none;
   }
   
+  @media screen and (min-width: 1440px) {
+    .container-score {
+      width: 260px;
+      height: 260px;
+    }
+  }
